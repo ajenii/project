@@ -41,7 +41,6 @@ app.use(function (err, req, res, next) {
     return;
 });
 
-
 app.get('/api/articles', function (req, res) {
     
     return ArticleModel.find(function (err, articles) {
@@ -85,7 +84,6 @@ app.post('/api/articles', function (req, res) {
 });
 
 app.get('/api/articles/:id', function (req, res) {
- 
     return ArticleModel.findById(req.params.id, function (err, article) {
         if (!article) {
             res.statusCode = 404;
@@ -105,7 +103,6 @@ app.get('/api/articles/:id', function (req, res) {
 });
 
 app.put('/api/articles/:id', function (req, res) {
-
     return ArticleModel.findById(req.params.id, function (err, article) {
         if (!article) {
             res.statusCode = 404;
@@ -138,7 +135,6 @@ app.put('/api/articles/:id', function (req, res) {
 });
 
 app.delete('/api/articles/:id', function (req, res) {
-
     return ArticleModel.findById(req.params.id, function (err, article) {
         if (!article) {
             res.statusCode = 404;
@@ -153,8 +149,7 @@ app.delete('/api/articles/:id', function (req, res) {
                 return res.send({ status: 'OK' });
             } else {
                 res.statusCode = 500;
-                log.error('Internal error(%d): %s',
-                    res.statusCode, err.message);
+                log.error('Internal error(%d): %s', res.statusCode, err.message);
                 
                 return res.send({ error: 'Server error' });
             }
